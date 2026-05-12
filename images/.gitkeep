@@ -1,2 +1,5 @@
-# Images folder structure
-This folder contains all project images organized by category.
+images/
+├── grafica/
+├── fotografia/
+├── kitframe/
+└── cinema/
