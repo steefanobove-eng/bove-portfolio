@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stefano Bove</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f5f5f2;
+      --card: #ffffff;
+      --text: #111111;
+      --muted: #7a7a7a;
+      --border: #e7e7e2;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1200px, calc(100% - 48px));
+      margin: auto;
+    }
+
+    /* NAV */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background: rgba(245,245,242,0.8);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      color: var(--muted);
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 120px 0 100px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      align-items: end;
+    }
+
+    .hero-title {
+      font-size: clamp(58px, 9vw, 140px);
+      line-height: 0.92;
+      letter-spacing: -0.07em;
+      font-weight: 600;
+    }
+
+    .hero-info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding-bottom: 10px;
+    }
+
+    .hero-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
+
+    .hero-text {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    /* SECTION */
+
+    section {
+      padding: 100px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 48px;
+      gap: 24px;
+    }
+
+    .section-title {
+      font-size: 40px;
+      letter-spacing: -0.05em;
+      font-weight: 600;
+    }
+
+    .section-sub {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    /* PROJECT GRID */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .project-image {
+      aspect-ratio: 4/5;
+      background: #ecece7;
+    }
+
+    .project-info {
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .project-title {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .project-type {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    /* GALLERY */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .gallery-item {
+      aspect-ratio: 1;
+      background: #ecece7;
+      overflow: hidden;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 48px;
+    }
+
+    .about-text {
+      font-size: 28px;
+      line-height: 1.5;
+      letter-spacing: -0.04em;
+      max-width: 700px;
+    }
+
+    .about-small {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-top: 24px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 48px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      color: var(--muted);
+      transition: 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .projects-grid,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 80px;
+      }
+
+      .hero-title {
+        font-size: 72px;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo">Stefano Bove</div>
+
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <header class="hero">
+    <div class="container hero-grid">
+
+      <h1 class="hero-title">
+        Graphic<br>
+        Designer
+      </h1>
+
+      <div class="hero-info">
+        <div class="hero-label">Graphic Designer · Torino</div>
+
+        <p class="hero-text">
+          Creo identità visive e concept grafici che uniscono estetica, ricerca e cultura contemporanea. Dal design sportivo alla fotografia, ogni progetto vuole comunicare carattere e riconoscibilità.
+        </p>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+    <div class="container">
+
+      <div class="section-top">
+        <h2 class="section-title">Projects</h2>
+        <div class="section-sub">Selected Work</div>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- PROJECT 01 -->
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="https://via.placeholder.com/400x500?text=Graphic+Project" alt="Graphic Project">
+          </div>
+
+          <div class="project-info">
+            <div>
+              <div class="project-title">Graphic Project</div>
+            </div>
+
+            <div class="project-type">Grafica</div>
+          </div>
+        </article>
+
+        <!-- PROJECT 02 -->
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="https://via.placeholder.com/400x500?text=Photography+Project" alt="Photography Project">
+          </div>
+
+          <div class="project-info">
+            <div>
+              <div class="project-title">Photography Project</div>
+            </div>
+
+            <div class="project-type">Fotografia</div>
+          </div>
+        </article>
+
+        <!-- PROJECT 03 -->
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="https://via.placeholder.com/400x500?text=KITFRAME" alt="KITFRAME">
+          </div>
+
+          <div class="project-info">
+            <div>
+              <div class="project-title">#KITFRAME</div>
+            </div>
+
+            <div class="project-type">Kit Design</div>
+          </div>
+        </article>
+
+        <!-- PROJECT 04 -->
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="https://via.placeholder.com/400x500?text=Film+Project" alt="Film Project">
+          </div>
+
+          <div class="project-info">
+            <div>
+              <div class="project-title">Film Project</div>
+            </div>
+
+            <div class="project-type">Cinema</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+
+  <section id="gallery">
+    <div class="container">
+
+      <div class="section-top">
+        <h2 class="section-title">Gallery</h2>
+        <div class="section-sub">Photography / Details</div>
+      </div>
+
+      <div class="gallery">
+
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/300x300?text=Photo+1" alt="Photo 1">
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/300x300?text=Photo+2" alt="Photo 2">
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/300x300?text=Photo+3" alt="Photo 3">
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/300x300?text=Photo+4" alt="Photo 4">
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/300x300?text=Photo+5" alt="Photo 5">
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/300x300?text=Photo+6" alt="Photo 6">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+    <div class="container about-grid">
+
+      <div>
+        <div class="section-sub">About</div>
+      </div>
+
+      <div>
+        <p class="about-text">
+          Sono un graphic designer con una forte passione per il design sportivo, la fotografia e la comunicazione visiva. Mi piace creare prodotti grafici riconoscibili e con un'estetica ben precisa, curando ogni dettaglio tra estetica, composizione e identità.
+        </p>
+
+        <p class="about-small">
+          Specializzato in branding, visual identity, fotografia e design sportivo. Ogni progetto è sviluppato con ricerca attenta e dedizione ai dettagli.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer id="contact">
+    <div class="container footer-inner">
+
+      <div class="footer-copy">
+        © 2026 Stefano Bove
+      </div>
+
+      <div class="footer-links">
+        <a href="https://www.instagram.com/bove.psd/" target="_blank">Instagram</a>
+        <a href="mailto:bovepsd@gmail.com">Email</a>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>
